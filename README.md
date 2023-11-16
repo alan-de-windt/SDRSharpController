@@ -17,3 +17,8 @@ The following are the main features of this plugin:
 *  It can store the current frequency, filter mode and bandwidth ("memory:store" command) and restore SDRSharp to these settings ("memory:recall" command). The external controller does not need to retrieve and save anything. The plugin does everything when it receives these simple commands. The currently stored frequency is shown in the Memory section of its UI for reference.
 *  Similar commands to SDRSharp Net Remote are supported to set a setting to an exact value (i.e. "set_audio_gain:-40") and to retrieve current settings ("get:audio_gain").
 *  The plugin does not respond to acknowledge that it has received most command - it simply executes them if it can, or otherwise ignores them and does not do anything. This again simplifies implementation on the external controller end and reduces serial communications ("fire and forget", one way communication from the external controller to the plugin for "set" and "adjust" commands).
+
+Tested on Windows 10 with SDRSharp version 1919.
+
+Installation
+
