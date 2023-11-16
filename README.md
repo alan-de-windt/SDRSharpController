@@ -13,7 +13,8 @@ Following are the main features of this plugin:
 
 Tested on Windows 10 with SDRSharp version 1919.
 
-<h2>TO-DO</h2>
+<h2>To-Do</h2>
+
 This initial version covers the above-mentioned functionality.  For completeness and to allow more complex devices to be created I intend to add the following functionality in the near future:
 
 *  Add support (similar to SDRSharp Net Remote) to allow an exact value to be set for a setting (i.e. "set_audio_gain:-40") and to retrieve current settings (i.e. "get:audio_gain").
