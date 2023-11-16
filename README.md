@@ -1,4 +1,11 @@
 # SDRSharp Controller
+
+WARNING: This repository is not yet ready for consumption.
+
+TODO:
+* Add installation instructions
+* Upload .dll of compiled plugin
+
 This is a plugin for SDRSharp to be able to control it over a USB serial connection. It is inspired from the excellent SDRSharp Net Remote plugin created by Al Brown (https://github.com/EarToEarOak/SDRSharp-Net-Remote).
 
 The following are the main features of this plugin:
