@@ -1,8 +1,4 @@
-﻿/*
-
-*/
-
-using SDRSharp.Common;
+﻿using SDRSharp.Common;
 using SDRSharp.Radio;
 using System;
 using System.Collections.Generic;
