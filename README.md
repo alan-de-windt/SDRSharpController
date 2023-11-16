@@ -20,5 +20,5 @@ The following are the main features of this plugin:
 
 Tested on Windows 10 with SDRSharp version 1919.
 
-Installation
+<h1>Installation</h1>
 
