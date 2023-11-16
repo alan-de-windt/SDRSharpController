@@ -20,5 +20,8 @@ The following are the main features of this plugin:
 
 Tested on Windows 10 with SDRSharp version 1919.
 
-<h1>Installation</h1>
+<h2>Installation</h2>
+tbd
+<h2>Commands</h2>
+tbd
 
