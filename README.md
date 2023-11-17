@@ -13,12 +13,6 @@ Following are the main features of this plugin:
 </ul>
 Tested on Windows 10 with SDRSharp version 1919.
 
-<h2>To-Do</h2>
-
-This initial version covers the above-mentioned functionality.  For completeness and to allow more complex devices to be created I intend to add the following functionality in the near future:
-
-*  Add support (similar to SDRSharp Net Remote) to allow an exact value to be set for a setting (i.e. "set_audio_gain:-40") and to retrieve current settings (i.e. "get:audio_gain").
-
 <h2>Installation Instructions</h2>
 tbd
 <h2>Commands</h2>
@@ -138,5 +132,13 @@ Following is the full list of currently supported commands:
     <td>Adjusts the filter bandwidth by the amount received.  I.e. if the current filter bandwidth is set to 1000 and "adjust_filter_bandwidth:100" is received then it will set the filter bandwidth to 1100 (1000 + 100).  Similarly, if the current filter bandwidth is set to 1000 and "adjust_filter_bandwidth:-100" is received then it will set the filter bandwidth to 900 (1000 - 100).  If the integer received would result in an out-of-bounds filter bandwidth then the filter bandwidth is set to 10 if a negative integer was received, otherwise 250000 if a positive integer was received.</td>
   </tr>
 </table>
+<h2>To-Do</h2>
+
+The following commands will be implemented in the future:
+<ul>
+<li>set_tuning_step</li>
+<li>set_mode</li>
+</ul>
+
 <h2>Implementation</h2>
 The purpose of this SDRSharp plugin is to be able to build physical devices with push buttons, rotary encoders, etc. to control SDRSharp.  <a href="https://www.hackster.io/AlanDeWindt/sdrsharp-controller-83baa8">Here</a> is an example of such a device I built which was my motivation for creating this SDRSharp plugin.
