@@ -18,6 +18,8 @@ tbd
 <h2>Commands</h2>
 Inbound commands (commands sent by an external controller to the plugin) are comprised of a Command + ":" + Value, i.e. "adjust_audio_gain:1".  Commands and text values can have an underscore character or a space separating words and can be a mix of case.  So "adjust audio gain:1" and "Adjust_Audio_Gain:1" will also work.
 
+<b>IMPORTANT:</b>  The plugin initiates a handshake as soon as the Connect checkbox is checked.  If the handshake fails then the plugin will automatically disconnect from the serial port.  Please see the "connection_status:established" command below for further details.
+
 Following is the full list of currently supported commands:
 
 <table>
