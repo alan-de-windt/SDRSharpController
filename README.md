@@ -13,7 +13,7 @@
 <h2>Installation Instructions</h2>
 <ol>
 <li>Create a folder called "SDRSharp Controller" in the "Plugins" folder of SDRSharp.</li>
-<li>Download the "SDRSharp.SDRSharpController.dll" file from this site and place it in the "SDRSharp Controller" folder created in the step above.</li>
+<li>Download the "SDRSharp.SDRSharpController.dll" file from the "Installation" folder of this repository and place it in the "SDRSharp Controller" folder created in the step above.</li>
 <li>Start SDRSharp.  The plugin should be listed and available for use.</li>
 </ol>
 <h2>Commands</h2>
