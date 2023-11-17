@@ -1,8 +1,6 @@
 # SDRSharp Controller
-
-This is a plugin for SDRSharp to be able to control it over a USB serial connection. It is inspired from the excellent SDRSharp Net Remote plugin created by Al Brown (https://github.com/EarToEarOak/SDRSharp-Net-Remote).
-
-Following are the main features of this plugin:
+<p>This is a plugin for SDRSharp to be able to control it over a USB serial connection. It is inspired from the excellent SDRSharp Net Remote plugin created by Al Brown (https://github.com/EarToEarOak/SDRSharp-Net-Remote).
+<p>Following are the main features of this plugin:
 <ul>
 <li>Commands sent to this plugin are simple key/value text (no JSON formatting).</li>
 <li>It supports receiving increase/decrease commands for most setting (i.e. "adjust_audio_gain:+1", "adjust_audio_gain:+5", "adjust_audio_gain:-6). Out of bounds is checked by this plugin. This simplifies implementation of the external controller as it does not need to query the current value of a setting and keep track of it which can get out of sync if the user changes settings using the SDRSharp UI directly.</li>
@@ -11,17 +9,13 @@ Following are the main features of this plugin:
 <li>It can store the current frequency, filter mode and bandwidth ("memory:store" command) and restore SDRSharp to these settings ("memory:recall" command). The external controller does not need to retrieve and save anything. The plugin does everything when it receives these simple commands. The currently stored frequency is shown in the Memory section of its UI for reference.</li>
 <li>The plugin does not respond to acknowledge that it has received most command - it simply executes them if it can, or otherwise ignores them and does not do anything. This again simplifies implementation on the external controller end and reduces serial communications ("fire and forget", one way communication from the external controller to the plugin for "show_mode", "memory", "set_*" and "adjust_*" commands).</li>
 </ul>
-Tested on Windows 10 with SDRSharp version 1919.
-
+<p>Tested on Windows 10 with SDRSharp version 1919.
 <h2>Installation Instructions</h2>
-tbd
+<p>tbd
 <h2>Commands</h2>
-Inbound commands (commands sent by an external controller to the plugin) are comprised of a Command + ":" + Value, i.e. "adjust_audio_gain:1".  Commands and text values can have an underscore character or a space separating words and can be a mix of case.  So "adjust audio gain:1" and "Adjust_Audio_Gain:1" will also work.
-
-<b>IMPORTANT:</b>  The plugin initiates a handshake as soon as the Connect checkbox is checked.  If the handshake fails then the plugin will automatically disconnect from the serial port.  Please see the "connection_status:established" command below for further details.
-
-Following is the full list of currently supported commands:
-
+<p>Inbound commands (commands sent by an external controller to the plugin) are comprised of a Command + ":" + Value, i.e. "adjust_audio_gain:1".  Commands and text values can have an underscore character or a space separating words and can be a mix of case.  So "adjust audio gain:1" and "Adjust_Audio_Gain:1" will also work.
+<p><b>IMPORTANT:</b>  The plugin initiates a handshake as soon as the Connect checkbox is checked.  If the handshake fails then the plugin will automatically disconnect from the serial port.  Please see the "connection_status:established" command below for further details.
+<p>Following is the full list of currently supported commands:
 <table>
   <tr>
     <th>Command</th>
@@ -140,13 +134,11 @@ Following is the full list of currently supported commands:
   </tr>
 </table>
 <h2>To-Do</h2>
-
-The following commands have yet to be implemented:
+<p>The following commands have yet to be implemented:
 <ul>
 <li>set_tuning_step</li>
 <li>set_mode</li>
 <li>"get" commands that will send back current settings to the external controller (similar to what is supported in the SDRSharp Net Remote plugin)</li>
 </ul>
-
 <h2>Implementation</h2>
-The purpose of this SDRSharp plugin is to be able to build physical devices with push buttons, rotary encoders, etc. to control SDRSharp.  <a href="https://www.hackster.io/AlanDeWindt/sdrsharp-controller-83baa8">Here</a> is an example of such a device I built which was my motivation for creating this SDRSharp plugin.
+<p>The purpose of this SDRSharp plugin is to be able to build physical devices with push buttons, rotary encoders, etc. to control SDRSharp.  <a href="https://www.hackster.io/AlanDeWindt/sdrsharp-controller-83baa8">Here</a> is an example of such a device I built which was my motivation for creating this SDRSharp plugin.
