@@ -22,7 +22,7 @@ This initial version covers the above-mentioned functionality.  For completeness
 <h2>Installation Instructions</h2>
 tbd
 <h2>Commands</h2>
-Inbound commands (commands sent by an external controller to the plugin) are comprised of a Command + ":" + Value, i.e. "adjust_audio_gain:1".  Commands and text values can have underscore characters or spaces separating words and can be a mix of case.  So "adjust audio gain:1" and "Adjust_Audio_Gain:1" will also work.
+Inbound commands (commands sent by an external controller to the plugin) are comprised of a Command + ":" + Value, i.e. "adjust_audio_gain:1".  Commands and text values can have an underscore character or a space separating words and can be a mix of case.  So "adjust audio gain:1" and "Adjust_Audio_Gain:1" will also work.
 
 Following is the full list of currently supported commands:
 
@@ -65,12 +65,12 @@ Following is the full list of currently supported commands:
   <tr>
     <td>show_mode</td>
     <td>squelch_threshold</td>
-    <td>Update the UI to show that the squelch threshold is now being adjusted and show the squelch threshold setting.  Note that squelch is available for NFM, WFM and AM modes only.  If another mode is currently active a "Not available" message will appear in the UI.</td>
+    <td>Update the UI to show that the squelch threshold is now being adjusted and show the current squelch threshold setting.  Note that squelch is available for NFM, WFM and AM modes only.  If another mode is currently active a "Not available" message will appear in the UI.</td>
   </tr>
   <tr>
     <td>memory</td>
     <td>store</td>
-    <td>Stores the current frequency, mode and filter bandwidth and displays the stored frequency in the "Memory" section of the UI.</td>
+    <td>Stores the current frequency, mode and filter bandwidth and displays the stored frequency in the Memory section of the UI.</td>
   </tr>
   <tr>
     <td>memory</td>
@@ -79,13 +79,13 @@ Following is the full list of currently supported commands:
   </tr>
   <tr>
     <td>set_tuning</td>
-    <td>Positive integer between 1 and 999999999999</td>
-    <td>Sets SDRSharp to the frequency received.  If an out-of-range value has been received it will ignore the command.</td>
+    <td>Integer between 1 and 999999999999</td>
+    <td>Sets SDRSharp to the frequency received.  If an out-of-bounds value has been received it will ignore the command.</td>
   </tr>
   <tr>
     <td>adjust_tuning</td>
     <td>Negative or positive integer</td>
-    <td>First computes the amount of frequency to adjust by multiplying the integer received by the current tuning step, and then adds (if a positive integer was received) or substracts (if a negative integer was received) this value from the current frequency.  If an out-of-range condition would exist then the current frequency is not changed.  If the integer received results in an out-of-bounds condition then the frequency will be set to 1 if a negative integer was received, otherwise 999999999999 if a positive integer was received.</td>
+    <td>First computes the amount of frequency to adjust by multiplying the integer received by the current tuning step, and then adds (if a positive integer was received) or substracts (if a negative integer was received) this value from the current frequency.  If the integer received would result in an out-of-bounds condition then the frequency is set to 1 if a negative integer was received, otherwise 999999999999 if a positive integer was received.</td>
   </tr>
   <tr>
     <td>adjust_tuning_step</td>
@@ -100,7 +100,7 @@ Following is the full list of currently supported commands:
   <tr>
     <td>set_audio_gain</td>
     <td>Integer between -60 and 20</td>
-    <td>Sets SDRSharp to the audio gain / volume level received.  If an out-of-range value has been received it will ignore the command.</td>
+    <td>Sets SDRSharp to the audio gain / volume level received.  If an out-of-bounds value has been received then it will ignore the command.</td>
   </tr>
   <tr>
     <td>adjust_audio_gain</td>
@@ -110,7 +110,7 @@ Following is the full list of currently supported commands:
   <tr>
     <td>set_squelch_threshold</td>
     <td>Integer between 0 and 100</td>
-    <td>Sets SDRSharp to the squelch threshold received.  If an out-of-range value has been received or the current mode is not NFM, WFM or AM (only modes for which squelch is available) then the command is ignored.</td>
+    <td>Sets SDRSharp to the squelch threshold received.  If an out-of-bounds value has been received or the current mode is not NFM, WFM or AM (only modes for which squelch is available) then the command is ignored.</td>
   </tr>
   <tr>
     <td>adjust_squelch_threshold</td>
@@ -120,7 +120,7 @@ Following is the full list of currently supported commands:
   <tr>
     <td>set_zoom</td>
     <td>Integer between 0 and 60</td>
-    <td>Sets SDRSharp to the FFT zoom level received.  If an out-of-range value has been received then the command is ignored.</td>
+    <td>Sets SDRSharp to the FFT zoom level received.  If an out-of-bounds value has been received then the command is ignored.</td>
   </tr>
   <tr>
     <td>adjust_zoom</td>
@@ -130,7 +130,7 @@ Following is the full list of currently supported commands:
   <tr>
     <td>set_filter_bandwidth</td>
     <td>Integer between 10 and 250000</td>
-    <td>Sets SDRSharp to the filter bandwidth received.  If an out-of-range value has been received then the command is ignored.</td>
+    <td>Sets SDRSharp to the filter bandwidth received.  If an out-of-bounds value has been received then the command is ignored.</td>
   </tr>
   <tr>
     <td>adjust_filter_bandwidth</td>
