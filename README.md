@@ -23,7 +23,9 @@ This initial version covers the above-mentioned functionality.  For completeness
 tbd
 <h2>Commands</h2>
 Inbound commands (commands sent by an external controller to the plugin) are comprised of a Command + ":" + Value, i.e. "adjust_audio_gain:1".  Commands and text values can have underscore characters or spaces separating words and can be a mix of case.  So "adjust audio gain:1" and "Adjust_Audio_Gain:1" will also work.
-Following is the full list currently supported commands:
+
+Following is the full list of currently supported commands:
+
 <table>
   <tr>
     <th>Command</th>
@@ -44,6 +46,51 @@ Following is the full list currently supported commands:
     <td>show_mode</td>
     <td>filter_bandwidth</td>
     <td>Update the UI to show that the filter bandwidth is now being adjusted and show the current filter bandwidth</td>
+  </tr>
+  <tr>
+    <td>show_mode</td>
+    <td>mode</td>
+    <td>Update the UI to show that the filter / demodulation mode is now being adjusted and show the current mode</td>
+  </tr>
+  <tr>
+    <td>show_mode</td>
+    <td>audio_gain</td>
+    <td>Update the UI to show that the audio gain / volume is now being adjusted and show the current audio gain</td>
+  </tr>
+  <tr>
+    <td>show_mode</td>
+    <td>zoom</td>
+    <td>Update the UI to show that the FFT zoom is now being adjusted and show the current zoom setting</td>
+  </tr>
+  <tr>
+    <td>show_mode</td>
+    <td>squelch_threshold</td>
+    <td>Update the UI to show that the squelch threshold is now being adjusted and show the squelch threshold setting.  Note that squelch is available for NFM, WFM and AM modes only.  If another mode is currently active a "Not available" message will appear in the UI.</td>
+  </tr>
+  <tr>
+    <td>memory</td>
+    <td>store</td>
+    <td>Stores the current frequency, mode and filter bandwidth and displays the stored frequency in the "Memory" section of the UI.</td>
+  </tr>
+  <tr>
+    <td>memory</td>
+    <td>recall</td>
+    <td>Sets SDRSharp to the previously stored frequency, mode and filter bandwidth (what was stored when the "memory:store" command was received).  If a "memory:store" command was not received yet then nothing will happen.</td>
+  </tr>
+  <tr>
+    <td>set_tuning</td>
+    <td>Positive integer between 1 and 999999999999</td>
+    <td>Sets SDRSharp to the frequency received.  If an out-of-range value has been received it will ignore the command.</td>
+  </tr>
+  <tr>
+    <td>adjust_tuning</td>
+    <td>Negative or positive integer</td>
+    <td>First computes the amount of frequency to adjust by multiplying the integer received by the current tuning step, and then adds (if a positive integer was received) or substracts (if a negative integer was received) this value from the current frequency.  If an out-of-range condition would exist then the current frequency is not changed.</td>
+  </tr>
+  <tr>
+    <td>adjust_tuning_step</td>
+    <td>Negative or positive integer</td>
+    <td>Changes to a previous or next available tuning step based on the integer received.  I.e. if the current tuning step is set to 1000 and "adjust_tuning_step:1" is received then the tuning step will be set to 2500 which is the next highest tuning step available after 1000.  If the current tuning step is set to 1000 and "adjust_tuning_step:2" is received then the tuning step will be set to 3000 which is two tuning steps above 1000.  Similarly, if the current tuning step is set to 1000 and "adjust_tuning_step:-1" is received then the tuning step will be set to 500 which is the first tuning step available below 1000.  Note that if the Snap feature is currently set in SDRSharp then SDRSharp will also adjust the frequency to "snap" it to the step selected which will also be reflected in the Controller Settings section of the UI.</td>
   </tr>
 </table>
 <h2>Implementation</h2>
