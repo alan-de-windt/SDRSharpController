@@ -170,11 +170,12 @@ namespace SDRSharp.SDRSharpController
                     _data = _item.ToString();
                     _data = _data.ToLower();
                     _data = _data.Replace("\r", "");  // Removes carriage return character at end of string
+                    _data = _data.Replace("_", " ");  // Replaces underscore characters with spaces
                     string[] command = _data.Split(':');
 
                     if (_connection_established == false)
                     {
-                        if (command[0] == "connection_status" && command[1] == "established")
+                        if (command[0] == "connection status" && command[1] == "established")
                         {
                             _connection_established = true;
                             labelControl.Text = "Connected";
@@ -191,7 +192,7 @@ namespace SDRSharp.SDRSharpController
                     else
                     {
 
-                        if (command[0] == "show_mode")
+                        if (command[0] == "show mode")
                         {
                             labelControl.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(command[1]);
                             switch (command[1])
@@ -321,7 +322,7 @@ namespace SDRSharp.SDRSharpController
                         {
                             switch (command[0])
                             {
-                                case "set_tuning":
+                                case "set tuning":
                                     // Frequency range: 1 to 999999999999
                                     _new_frequency = Convert.ToInt64(command[1]);
                                     if (_new_frequency >= 1 && _new_frequency <= 999999999999)
@@ -331,7 +332,7 @@ namespace SDRSharp.SDRSharpController
                                     }
                                     break;
 
-                                case "adjust_tuning":
+                                case "adjust tuning":
                                     // Frequency range: 1 to 999999999999
                                     _frequency_adjustment = Convert.ToInt64(command[1]) * _control.StepSize;
                                     _new_frequency = _control.Frequency + _frequency_adjustment;
@@ -350,7 +351,7 @@ namespace SDRSharp.SDRSharpController
                                     labelFrequency.Text = _control.Frequency.ToString("0,0", CultureInfo.InvariantCulture);
                                     break;
 
-                                case "adjust_tuning_step":
+                                case "adjust tuning step":
                                     _index = Array.FindIndex(_tuning_steps, FindStep);
                                     if (_index != -1)
                                     {
@@ -369,7 +370,7 @@ namespace SDRSharp.SDRSharpController
                                     }
                                     break;
 
-                                case "adjust_mode":
+                                case "adjust mode":
                                     _index = Array.FindIndex(_modes, FindMode);
                                     if (_index != -1)
                                     {
@@ -390,7 +391,7 @@ namespace SDRSharp.SDRSharpController
                                     }
                                     break;
 
-                                case "set_audio_gain":
+                                case "set audio gain":
                                     // Audio Gain range: -60 to 20
                                     _new_audio_gain = Convert.ToInt16(command[1]);
                                     if (_new_audio_gain >= -60 && _new_audio_gain <= 20)
@@ -400,7 +401,7 @@ namespace SDRSharp.SDRSharpController
                                     }
                                     break;
 
-                                case "adjust_audio_gain":
+                                case "adjust audio gain":
                                     // Audio Gain Range: -60 to 20
                                     _audio_gain_adjustment = Convert.ToInt16(command[1]);
                                     _new_audio_gain = _control.AudioGain + _audio_gain_adjustment;
@@ -416,7 +417,7 @@ namespace SDRSharp.SDRSharpController
                                     trackBarAudioGain.Value = _control.AudioGain;
                                     break;
 
-                                case "set_squelch_threshold":
+                                case "set squelch threshold":
                                     // Squelch range: 0 to 100
                                     // Squelch is only available in NFM, WFM and AM
                                     if (_control.DetectorType.ToString() == "NFM" ||
@@ -437,7 +438,7 @@ namespace SDRSharp.SDRSharpController
                                     }
                                     break;
 
-                                case "adjust_squelch_threshold":
+                                case "adjust squelch threshold":
                                     // Squelch range: 0 to 100
                                     // Squelch is only available in NFM, WFM and AM
                                     if (_control.DetectorType.ToString() == "NFM" ||
@@ -470,7 +471,7 @@ namespace SDRSharp.SDRSharpController
                                     }
                                     break;
 
-                                case "set_zoom":
+                                case "set zoom":
                                     // Zoom range: 0 to 60
                                     _new_zoom = Convert.ToInt16(command[1]);
                                     if (_new_zoom >= 0 && _new_zoom <= 100)
@@ -481,7 +482,7 @@ namespace SDRSharp.SDRSharpController
                                     }
                                     break;
 
-                                case "adjust_zoom":
+                                case "adjust zoom":
                                     // Zoom range: 0 to 60
                                     _zoom_adjustment = Convert.ToInt16(command[1]);
                                     _new_zoom = _control.Zoom + _zoom_adjustment;
@@ -501,7 +502,7 @@ namespace SDRSharp.SDRSharpController
                                     labelZoomValue.Text = _control.Zoom.ToString();
                                     break;
 
-                                case "set_filter_bandwidth":
+                                case "set filter bandwidth":
                                     // Filter Bandwidth range: 10 to 250000
                                     _new_filter_bandwidth = Convert.ToInt16(command[1]);
                                     if (_new_filter_bandwidth >= 10 && _new_filter_bandwidth <= 250000)
@@ -512,7 +513,7 @@ namespace SDRSharp.SDRSharpController
                                     }
                                     break;
 
-                                case "adjust_filter_bandwidth":
+                                case "adjust filter bandwidth":
                                     // Filter Bandwidth range: 10 to 250000
                                     _filter_bandwidth_adjustment = Convert.ToInt16(command[1]);
                                     _new_filter_bandwidth = _control.FilterBandwidth + _filter_bandwidth_adjustment;
