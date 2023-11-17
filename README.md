@@ -151,5 +151,5 @@
 <li>set_mode</li>
 <li>"get" commands that will send back current settings to the external controller (similar to what is supported in the SDRSharp Net Remote plugin)</li>
 </ul>
-<h2>Implementation</h2>
-<p>The purpose of this SDRSharp plugin is to be able to build physical devices with push buttons, rotary encoders, etc. to control SDRSharp.  <a href="https://www.hackster.io/AlanDeWindt/sdrsharp-controller-83baa8">Here</a> is an example of such a device I built which was my motivation for creating this SDRSharp plugin.
+<h2>Example Implementation</h2>
+<p><a href="https://www.hackster.io/AlanDeWindt/sdrsharp-controller-83baa8">Here</a> is an example of a device I created which uses this plugin.
