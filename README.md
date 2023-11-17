@@ -27,6 +27,11 @@ Following is the full list of currently supported commands:
     <th>Purpose</th>
   </tr>
   <tr>
+    <td>connection_status</td>
+    <td>established</td>
+    <td>When a serial port is selected in the UI and then the Connect checkbox is checked, the plugin will immediately send a "connection_request" text string to the external controller.  The external controller should monitor for this message and send back "connection_status:established" immediately.  If the plugin does not receive this command back within a second it will assume that whatever is connected to the selected serial port is not a compatible controller and it will automatically un-select the Connect checkbox and terminate the serial connection.</td>
+  </tr>
+  <tr>
     <td>show_mode</td>
     <td>tuning</td>
     <td>Update the UI to show that tuning is now being adjusted and show the current frequency.</td>
