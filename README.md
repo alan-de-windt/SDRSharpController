@@ -19,7 +19,7 @@ This initial version covers the above-mentioned functionality.  For completeness
 
 *  Add support (similar to SDRSharp Net Remote) to allow an exact value to be set for a setting (i.e. "set_audio_gain:-40") and to retrieve current settings (i.e. "get:audio_gain").
 
-<h2>Installation</h2>
+<h2>Installation Instructions</h2>
 tbd
 <h2>Commands</h2>
 Inbound commands (commands sent by an external controller to the plugin) are comprised of a Command + ":" + Value, i.e. "adjust_audio_gain:1".  Commands and text values can have underscore characters or spaces separating words and can be a mix of case.  So "adjust audio gain:1" and "Adjust_Audio_Gain:1" will also work.
@@ -35,32 +35,32 @@ Following is the full list of currently supported commands:
   <tr>
     <td>show_mode</td>
     <td>tuning</td>
-    <td>Update the UI to show that tuning is now being adjusted and show the current frequency</td>
+    <td>Update the UI to show that tuning is now being adjusted and show the current frequency.</td>
   </tr>
   <tr>
     <td>show_mode</td>
     <td>tuning_step</td>
-    <td>Update the UI to show that the tuning step is now being adjusted and show the current tuning step</td>
+    <td>Update the UI to show that the tuning step is now being adjusted and show the current tuning step.</td>
   </tr>
   <tr>
     <td>show_mode</td>
     <td>filter_bandwidth</td>
-    <td>Update the UI to show that the filter bandwidth is now being adjusted and show the current filter bandwidth</td>
+    <td>Update the UI to show that the filter bandwidth is now being adjusted and show the current filter bandwidth.</td>
   </tr>
   <tr>
     <td>show_mode</td>
     <td>mode</td>
-    <td>Update the UI to show that the filter / demodulation mode is now being adjusted and show the current mode</td>
+    <td>Update the UI to show that the filter / demodulation mode is now being adjusted and show the current mode.</td>
   </tr>
   <tr>
     <td>show_mode</td>
     <td>audio_gain</td>
-    <td>Update the UI to show that the audio gain / volume is now being adjusted and show the current audio gain</td>
+    <td>Update the UI to show that the audio gain / volume is now being adjusted and show the current audio gain.</td>
   </tr>
   <tr>
     <td>show_mode</td>
     <td>zoom</td>
-    <td>Update the UI to show that the FFT zoom is now being adjusted and show the current zoom setting</td>
+    <td>Update the UI to show that the FFT zoom is now being adjusted and show the current zoom setting.</td>
   </tr>
   <tr>
     <td>show_mode</td>
@@ -85,12 +85,57 @@ Following is the full list of currently supported commands:
   <tr>
     <td>adjust_tuning</td>
     <td>Negative or positive integer</td>
-    <td>First computes the amount of frequency to adjust by multiplying the integer received by the current tuning step, and then adds (if a positive integer was received) or substracts (if a negative integer was received) this value from the current frequency.  If an out-of-range condition would exist then the current frequency is not changed.</td>
+    <td>First computes the amount of frequency to adjust by multiplying the integer received by the current tuning step, and then adds (if a positive integer was received) or substracts (if a negative integer was received) this value from the current frequency.  If an out-of-range condition would exist then the current frequency is not changed.  If the integer received results in an out-of-bounds condition then the frequency will be set to 1 if a negative integer was received, otherwise 999999999999 if a positive integer was received.</td>
   </tr>
   <tr>
     <td>adjust_tuning_step</td>
     <td>Negative or positive integer</td>
-    <td>Changes to a previous or next available tuning step based on the integer received.  I.e. if the current tuning step is set to 1000 and "adjust_tuning_step:1" is received then the tuning step will be set to 2500 which is the next highest tuning step available after 1000.  If the current tuning step is set to 1000 and "adjust_tuning_step:2" is received then the tuning step will be set to 3000 which is two tuning steps above 1000.  Similarly, if the current tuning step is set to 1000 and "adjust_tuning_step:-1" is received then the tuning step will be set to 500 which is the first tuning step available below 1000.  Note that if the Snap feature is currently set in SDRSharp then SDRSharp will also adjust the frequency to "snap" it to the step selected which will also be reflected in the Controller Settings section of the UI.</td>
+    <td>Changes to a previous or next available tuning step based on the integer received.  I.e. if the current tuning step is set to 1000 and "adjust_tuning_step:1" is received then the tuning step will be set to 2500 which is the next highest tuning step available after 1000.  If the current tuning step is set to 1000 and "adjust_tuning_step:2" is received then the tuning step will be set to 3000 which is two tuning steps above 1000.  Similarly, if the current tuning step is set to 1000 and "adjust_tuning_step:-1" is received then the tuning step will be set to 500 which is the first tuning step available below 1000.  If the integer received would result in an out-of-bounds condition then the tuning step will be set to 1 if a negative integer was received, otherwise 1000000 if a positive integer was received.  Note that if the Snap feature is currently set in SDRSharp then SDRSharp will also adjust the frequency to "snap" it to the step selected which will also be reflected in the Controller Settings section of the UI.</td>
+  </tr>
+  <tr>
+    <td>adjust_mode</td>
+    <td>Negative or positive integer</td>
+    <td>Changes to a previous or next available mode based on the integer received.  I.e. if the current mode is set to WFM and "adjust_mode:1" is received then the mode will be set to AM which is the next mode available after WFM.  Similarly, if the current mode is set to WFM and "adjust_mode:-1" is received then the mode will be set to NFM which is the previous mode available before WFM.  If the integer received would result in an out-of-bounds condition then the first mode (NFM) will be set if a negative integer was received, otherwise the last mode (RAW) if a positive integer was received.</td>
+  </tr>
+  <tr>
+    <td>set_audio_gain</td>
+    <td>Integer between -60 and 20</td>
+    <td>Sets SDRSharp to the audio gain / volume level received.  If an out-of-range value has been received it will ignore the command.</td>
+  </tr>
+  <tr>
+    <td>adjust_audio_gain</td>
+    <td>Negative or positive integer</td>
+    <td>Adjusts the audio gain / volume level by the amount received in the integer.  I.e. if the current audio gain is set to -40 and "adjust_audio_gain:10" is received then it will set the audio gain to -30 (-40 + 10).  If the integer received would result in an out-of-bounds audio gain then the audio gain will be set to -60 if a negative integer was received, otherwise 20 if a positive integer was received.</td>
+  </tr>
+  <tr>
+    <td>set_squelch_threshold</td>
+    <td>Integer between 0 and 100</td>
+    <td>Sets SDRSharp to the squelch threshold received.  If an out-of-range value has been received or the current mode is not NFM, WFM or AM (only modes for which squelch is available) then the command is ignored.</td>
+  </tr>
+  <tr>
+    <td>adjust_squelch_threshold</td>
+    <td>Negative or positive integer</td>
+    <td>Adjusts the squelch threshold by the amount received in the integer.  I.e. if the current squelch threshold is set to 15 and "adjust_squelch_threshold:5" is received then it will set the squelch threshold to 20 (15 + 5).  Similarly, if the current squelch threshold is set to 15 and "adjust_squelch_threshold:-5" is received then it will set the squelch threshold to 10 (15 - 5).  If the integer received would result in an out-of-bounds squelch threshold then the squelch threshold is set to 0 if a negative integer was received, otherwise 100 if a positive integer was received.</td>
+  </tr>
+  <tr>
+    <td>set_zoom</td>
+    <td>Integer between 0 and 60</td>
+    <td>Sets SDRSharp to the FFT zoom level received.  If an out-of-range value has been received then the command is ignored.</td>
+  </tr>
+  <tr>
+    <td>adjust_zoom</td>
+    <td>Negative or positive integer</td>
+    <td>Adjusts the FFT zoom level by the amount received in the integer.  I.e. if the current zoom is set to 30 and "adjust_zoom:5" is received then it will set the zoom to 35 (30 + 5).  Similarly, if the current zoom is set to 30 and "adjust_zoom:-5" is received then it will set the zoom to 25 (30 - 5).  If the integer received would result in an out-of-bounds zoom then the zoom is set to 0 if a negative integer was received, otherwise 60 if a positive integer was received.</td>
+  </tr>
+  <tr>
+    <td>set_filter_bandwidth</td>
+    <td>Integer between 10 and 250000</td>
+    <td>Sets SDRSharp to the filter bandwidth received.  If an out-of-range value has been received then the command is ignored.</td>
+  </tr>
+  <tr>
+    <td>adjust_filter_bandwidth</td>
+    <td>Negative or positive integer</td>
+    <td>Adjusts the filter bandwidth by the amount received.  I.e. if the current filter bandwidth is set to 1000 and "adjust_filter_bandwidth:100" is received then it will set the filter bandwidth to 1100 (1000 + 100).  Similarly, if the current filter bandwidth is set to 1000 and "adjust_filter_bandwidth:-100" is received then it will set the filter bandwidth to 900 (1000 - 100).  If the integer received would result in an out-of-bounds filter bandwidth then the filter bandwidth is set to 10 if a negative integer was received, otherwise 250000 if a positive integer was received.</td>
   </tr>
 </table>
 <h2>Implementation</h2>
