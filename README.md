@@ -134,7 +134,7 @@ Following is the full list of currently supported commands:
 </table>
 <h2>To-Do</h2>
 
-The following commands will be implemented in the future:
+The following commands have yet to be implemented:
 <ul>
 <li>set_tuning_step</li>
 <li>set_mode</li>
