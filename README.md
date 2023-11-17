@@ -11,7 +11,11 @@
 </ul>
 <p>Tested on Windows 10 with SDRSharp version 1919.
 <h2>Installation Instructions</h2>
-<p>tbd
+<ol>
+<li>Create a folder called "SDRSharp Controller" in the "Plugins" folder of SDRSharp.</li>
+<li>Download the "SDRSharp.SDRSharpController.dll" file from this site and place it in the "SDRSharp Controller" folder created in the step above.</li>
+<li>Start SDRSharp.  The plugin should be listed and available for use.</li>
+</ol>
 <h2>Commands</h2>
 <p>Inbound commands (commands sent by an external controller to the plugin) are comprised of a Command + ":" + Value, i.e. "adjust_audio_gain:1".  Commands and text values can have an underscore character or a space separating words and can be a mix of case.  So "adjust audio gain:1" and "Adjust_Audio_Gain:1" will also work.
 <p><b>IMPORTANT:</b>  The plugin initiates a handshake as soon as the Connect checkbox is checked.  If the handshake fails then the plugin will automatically disconnect from the serial port.  Please see the "connection_status:established" command below for further details.
