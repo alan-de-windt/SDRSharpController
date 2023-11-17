@@ -187,7 +187,7 @@ namespace SDRSharp.SDRSharpController
 
                         }
 
-                    } 
+                    }
                     else
                     {
 

@@ -1,7 +1,5 @@
 ﻿using System.Windows.Forms;
-using System.IO.Ports;
 using SDRSharp.Common;
-using SDRSharp.Radio;
 
 namespace SDRSharp.SDRSharpController
 {
