@@ -19,10 +19,10 @@
 <h2>Activation Instructions</h2>
 <p>To activate the plugin you will need to do the following in the Serial Connection section of the UI:
 <ol>
-<li>Select the serial port that the external controller is connected to</li>
+<li>In the drop-down field, select the serial port that the external controller is connected to</li>
 <li>Check/select the Connect checkbox</li>
 </ol>
-<p>Note:  If the serial port that the external controller is connected to does not appear in the drop-down, stop and re-start SDRSharp.  It might also be helpful to check that your external controller is listed in the Windows Device Manager under "Ports (COM & LPT)".
+<p>Note:  If the serial port that the external controller is connected to does not appear in the drop-down field, stop and re-start SDRSharp.  It might also be helpful to check that your external controller is listed in the Windows Device Manager under "Ports (COM & LPT)".
 <h2>Commands</h2>
 <p>Inbound commands (commands sent by an external controller to the plugin) are comprised of a Command + ":" + Value, i.e. "adjust_audio_gain:1".  Commands and text values can have an underscore character or a space separating words and can be a mix of case.  So "adjust audio gain:1" and "Adjust_Audio_Gain:1" will also work.
 <p><b>IMPORTANT:</b>  The plugin initiates a handshake as soon as the Connect checkbox is checked.  If the handshake fails then the plugin will automatically disconnect from the serial port.  Please see the "connection_status:established" command below for further details.
