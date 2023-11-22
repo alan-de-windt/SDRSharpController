@@ -9,7 +9,7 @@
 <li>It can store the current frequency, filter mode and bandwidth ("memory:store" command) and restore SDRSharp to these settings ("memory:recall" command). The external controller does not need to retrieve and save anything. The plugin does everything when it receives these simple commands. The currently stored frequency is shown in the Memory section of its UI for reference.</li>
 <li>The plugin does not respond to acknowledge that it has received most command - it simply executes them if it can, or otherwise ignores them and does not do anything. This again simplifies implementation on the external controller end and reduces serial communications ("fire and forget", one way communication from the external controller to the plugin for "show_mode", "memory", "set_*" and "adjust_*" commands).</li>
 </ul>
-<p>Tested on Windows 10 with SDRSharp version 1919.
+<p><b>IMPORTANT:</b>  The plugin was successfully tested on Windows 10 with SDRSharp version 1919.  It is expected to work with other 19xx versions which use .NET 7 (the plugin has been compiled with .NET 7), but not with versions prior to 19xx..
 <h2>Installation Instructions</h2>
 <ol>
 <li>Create a folder called "SDRSharp Controller" in the "Plugins" folder of SDRSharp.</li>
