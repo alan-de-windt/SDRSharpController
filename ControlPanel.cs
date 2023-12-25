@@ -44,6 +44,9 @@ namespace SDRSharp.SDRSharpController
         private long _memory_frequency = 0;
         private int _memory_filter_bandwidth = 0;
         private int _memory_mode = 0;
+        private int _memory_audio_gain = 0;
+        private int _memory_tuning_step = 100;
+        private int _memory_zoom = 0;
 
         private bool _connection_established = false;
         private static System.Timers.Timer aTimer;
@@ -301,6 +304,9 @@ namespace SDRSharp.SDRSharpController
                                     _memory_frequency = _control.Frequency;
                                     _memory_mode = (int)_control.DetectorType;
                                     _memory_filter_bandwidth = _control.FilterBandwidth;
+                                    _memory_audio_gain = _control.AudioGain;
+                                    _memory_tuning_step = _control.StepSize;
+                                    _memory_zoom = _control.Zoom;
                                     labelMemory.Text = _control.Frequency.ToString("0,0", CultureInfo.InvariantCulture);
                                     break;
 
@@ -310,6 +316,9 @@ namespace SDRSharp.SDRSharpController
                                         _control.Frequency = _memory_frequency;
                                         _control.DetectorType = (DetectorType)_memory_mode;
                                         _control.FilterBandwidth = _memory_filter_bandwidth;
+                                        _control.AudioGain = _memory_audio_gain;
+                                        _control.Zoom = _memory_zoom;
+                                        _control.StepSize = _memory_tuning_step;
                                         labelFrequency.Text = _control.Frequency.ToString("0,0", CultureInfo.InvariantCulture);
                                         labelFilterBandwidth.Text = _control.FilterBandwidth.ToString("0,0", CultureInfo.InvariantCulture);
                                         labelMode.Text = _control.DetectorType.ToString();
